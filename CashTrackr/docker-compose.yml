@@ -1,0 +1,10 @@
+services:
+  db-cash-trackr:
+    container_name: CashTrackrSqlServer
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+        - 1433:1433
+    environment:
+        ACCEPT_EULA: Y
+        SA_PASSWORD: root@strongPassword
+        MSSQL_PID: Developer
