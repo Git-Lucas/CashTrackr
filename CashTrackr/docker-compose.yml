@@ -7,7 +7,12 @@ services:
     environment:
         ACCEPT_EULA: Y
         SA_PASSWORD: root@strongPassword
-        MSSQL_PID: Developer
+    healthcheck:
+      test: ["CMD-SHELL", "(/bin/bash -c 'echo > /dev/tcp/localhost/1433') || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   no-sql-db-cash-trackr:
     container_name: CashTrackrRedis
