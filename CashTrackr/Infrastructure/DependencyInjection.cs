@@ -10,7 +10,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
         services
-            .AddContext(configuration)
+            .AddContexts(configuration)
             .AddRepositories();
 
         return services;
@@ -23,11 +23,20 @@ public static class DependencyInjection
         return services;
     }
 
-    private static IServiceCollection AddContext(this IServiceCollection services, ConfigurationManager configuration)
+    private static IServiceCollection AddContexts(this IServiceCollection services, ConfigurationManager configuration)
     {
         services.AddDbContext<EfAdapterContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            options.UseSqlServer(configuration.GetConnectionString("SqlServerConnection"));
+        });
+
+        services.AddStackExchangeRedisCache(options =>
+        {
+            string connectionString = configuration.GetConnectionString("RedisConnection")
+                ?? throw new InvalidOperationException("Unable to read connection string from cache server.");
+
+            options.Configuration = connectionString;
+            options.InstanceName = "CashTrackr:";
         });
 
         return services;

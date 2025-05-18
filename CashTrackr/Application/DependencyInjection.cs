@@ -1,5 +1,6 @@
-﻿using CashTrackr.Application.Transactions.Commands;
-using CashTrackr.Application.Transactions.Events;
+﻿using CashTrackr.Application.Balances.Queries.Handlers;
+using CashTrackr.Application.Transactions.Commands.Events;
+using CashTrackr.Application.Transactions.Commands.Handlers;
 
 namespace CashTrackr.Application;
 
@@ -9,7 +10,8 @@ public static class DependencyInjection
     {
         services
             .AddCommands()
-            .AddEvents();
+            .AddEvents()
+            .AddQueries();
 
         return services;
     }
@@ -25,6 +27,13 @@ public static class DependencyInjection
     {
         services.AddScoped<TransactionCreated>();
         
+        return services;
+    }
+
+    private static IServiceCollection AddQueries(this IServiceCollection services)
+    {
+        services.AddScoped<GetDailyBalanceQueryHandler>();
+
         return services;
     }
 }

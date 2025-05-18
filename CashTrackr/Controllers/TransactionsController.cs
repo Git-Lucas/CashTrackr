@@ -1,11 +1,11 @@
-using CashTrackr.Application.Transactions.Commands;
+using CashTrackr.Application.Transactions.Commands.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashTrackr.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TransactionController : ControllerBase
+    public class TransactionsController : ControllerBase
     {
         [HttpPost(Name = "CreateTransaction")]
         public async Task<IActionResult> CreateAsync([FromServices] CreateCommandHandler handler, [FromBody] CreateRequest request)

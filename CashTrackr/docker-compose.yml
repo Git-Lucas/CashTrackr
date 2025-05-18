@@ -1,5 +1,5 @@
 services:
-  db-cash-trackr:
+  sql-db-cash-trackr:
     container_name: CashTrackrSqlServer
     image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
@@ -8,3 +8,10 @@ services:
         ACCEPT_EULA: Y
         SA_PASSWORD: root@strongPassword
         MSSQL_PID: Developer
+
+  no-sql-db-cash-trackr:
+    container_name: CashTrackrRedis
+    image: redis:latest
+    ports:
+        - 6379:6379
+    restart: always  

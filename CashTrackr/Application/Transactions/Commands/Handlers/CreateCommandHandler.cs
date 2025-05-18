@@ -1,18 +1,18 @@
-﻿using CashTrackr.Application.Transactions.Events;
+﻿using CashTrackr.Application.Transactions.Commands.Events;
 using CashTrackr.Domain.Transactions;
 using Type = CashTrackr.Domain.Transactions.Type;
 
-namespace CashTrackr.Application.Transactions.Commands;
+namespace CashTrackr.Application.Transactions.Commands.Handlers;
 
 public class CreateCommandHandler : ITransactionCreated
 {
     private readonly ITransactionRepository _repository;
-    public event Action<Transaction> OnTransactionCreated;
+    public event Func<Transaction, Task> OnTransactionCreated;
     
     public CreateCommandHandler(ITransactionRepository repository, TransactionCreated transactionCreated)
     {
         _repository = repository;
-        OnTransactionCreated += transactionCreated.OnTransactionCreatedUpdateDailyBalance;
+        OnTransactionCreated += transactionCreated.OnTransactionCreatedUpdateDailyBalanceAsync;
     }
 
     public async Task<CreateResponse> HandleAsync(CreateRequest command)
@@ -21,7 +21,7 @@ public class CreateCommandHandler : ITransactionCreated
 
         await _repository.CreateAsync(entity);
 
-        OnTransactionCreated.Invoke(entity);
+        await OnTransactionCreated.Invoke(entity);
 
         return new CreateResponse(CreatedId: entity.Id);
     }

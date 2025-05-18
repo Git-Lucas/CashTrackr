@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CashTrackr.Migrations
 {
     [DbContext(typeof(EfAdapterContext))]
-    [Migration("20250517235034_TransactionsTableCreated")]
+    [Migration("20250518030346_TransactionsTableCreated")]
     partial class TransactionsTableCreated
     {
         /// <inheritdoc />
@@ -33,8 +33,8 @@ namespace CashTrackr.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
