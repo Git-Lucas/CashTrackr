@@ -1,8 +1,10 @@
 ﻿using CashTrackr.Domain.Transactions;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CashTrackr.Infrastructure.Data;
 
+[ExcludeFromCodeCoverage]
 public class EfAdapterContext(DbContextOptions options) : DbContext(options)
 {
     public DbSet<Transaction> Transactions { get; set; }

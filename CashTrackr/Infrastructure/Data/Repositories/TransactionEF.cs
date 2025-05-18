@@ -1,7 +1,9 @@
 ﻿using CashTrackr.Domain.Transactions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CashTrackr.Infrastructure.Data.Repositories;
 
+[ExcludeFromCodeCoverage]
 public class TransactionEF(EfAdapterContext context) : ITransactionRepository
 {
     private readonly EfAdapterContext _context = context;

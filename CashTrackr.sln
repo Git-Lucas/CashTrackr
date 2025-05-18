@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashTrackr", "CashTrackr\CashTrackr.csproj", "{263675CD-5281-458B-BAC0-D07B8E6F9B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashTrackr.Tests", "CashTrackr.Tests\CashTrackr.Tests.csproj", "{A75121D0-5D6B-4631-8D58-89713517019E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{263675CD-5281-458B-BAC0-D07B8E6F9B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263675CD-5281-458B-BAC0-D07B8E6F9B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263675CD-5281-458B-BAC0-D07B8E6F9B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75121D0-5D6B-4631-8D58-89713517019E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75121D0-5D6B-4631-8D58-89713517019E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75121D0-5D6B-4631-8D58-89713517019E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75121D0-5D6B-4631-8D58-89713517019E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

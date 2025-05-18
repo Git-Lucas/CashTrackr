@@ -15,7 +15,7 @@ public record Amount
     {
         if (value <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Amount)} must be greater than 0.");
+            throw new ArgumentOutOfRangeException(nameof(value), value, $"{nameof(Amount)} must be greater than 0.");
         }
     }
 }
