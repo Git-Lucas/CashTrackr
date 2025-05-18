@@ -1,4 +1,4 @@
-using CashTrackr.Application.Transactions.UseCases;
+using CashTrackr.Application.Transactions.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashTrackr.Controllers
@@ -8,9 +8,9 @@ namespace CashTrackr.Controllers
     public class TransactionController : ControllerBase
     {
         [HttpPost(Name = "CreateTransaction")]
-        public async Task<IActionResult> CreateAsync([FromServices] Create useCase, [FromBody] CreateRequest request)
+        public async Task<IActionResult> CreateAsync([FromServices] CreateCommandHandler handler, [FromBody] CreateRequest request)
         {
-            CreateResponse createResponse = await useCase.ExecuteAsync(request);
+            CreateResponse createResponse = await handler.HandleAsync(request);
 
             return Ok(createResponse);
         }

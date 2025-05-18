@@ -1,7 +1,6 @@
-﻿using CashTrackr.Application.Transactions.UseCases;
-using CashTrackr.Domain.Transactions;
+﻿using CashTrackr.Domain.Transactions;
 
-namespace CashTrackr.Application.Transactions;
+namespace CashTrackr.Application.Transactions.Commands;
 
 public static class Extensions
 {

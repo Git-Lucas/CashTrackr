@@ -1,4 +1,5 @@
-﻿using CashTrackr.Application.Transactions.UseCases;
+﻿using CashTrackr.Application.Transactions.Commands;
+using CashTrackr.Application.Transactions.Events;
 
 namespace CashTrackr.Application;
 
@@ -7,15 +8,23 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services
-            .AddUseCases();
+            .AddCommands()
+            .AddEvents();
 
         return services;
     }
 
-    private static IServiceCollection AddUseCases(this IServiceCollection services)
+    private static IServiceCollection AddCommands(this IServiceCollection services)
     {
-        services.AddScoped<Create>();
+        services.AddScoped<CreateCommandHandler>();
 
+        return services;
+    }
+
+    private static IServiceCollection AddEvents(this IServiceCollection services)
+    {
+        services.AddScoped<TransactionCreated>();
+        
         return services;
     }
 }
