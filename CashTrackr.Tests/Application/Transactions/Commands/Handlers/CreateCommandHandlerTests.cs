@@ -2,6 +2,7 @@
 using CashTrackr.Application.Transactions.Commands.Handlers;
 using CashTrackr.Domain.Transactions;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Type = CashTrackr.Domain.Transactions.Type;
 
@@ -12,6 +13,8 @@ public class CreateCommandHandlerTests
     public async Task HandleAsync_CreatesTransactionAndFiresEvent_ReturnsCreatedId()
     {
         // Arrange
+        Mock<ILogger<CreateCommandHandler>> loggerMock = new();
+
         Mock<ITransactionRepository> mockRepository = new();
         mockRepository
             .Setup(r => r.CreateAsync(It.IsAny<Transaction>()))
@@ -30,7 +33,7 @@ public class CreateCommandHandlerTests
 
         TransactionCreated transactionCreated = new(mockCache.Object);
 
-        CreateCommandHandler handler = new CreateCommandHandler(mockRepository.Object, transactionCreated);
+        CreateCommandHandler handler = new CreateCommandHandler(loggerMock.Object, mockRepository.Object, transactionCreated);
 
         CreateRequest request = new(100m, Type.Credit);
 
