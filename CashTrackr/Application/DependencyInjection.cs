@@ -1,9 +1,11 @@
 ﻿using CashTrackr.Application.Balances.Queries.Handlers;
 using CashTrackr.Application.Transactions.Commands.Events;
 using CashTrackr.Application.Transactions.Commands.Handlers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CashTrackr.Application;
 
+[ExcludeFromCodeCoverage]
 public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)

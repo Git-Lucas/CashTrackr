@@ -9,9 +9,13 @@ public class GetDailyBalanceQueryHandler(IDistributedCache distributedCache)
 
     public async Task<decimal> HandleAsync(DateOnly date)
     {
-        string dailyBalanceJson = await _distributedCache.GetStringAsync(TransactionKeys.GetDailyBalanceKey(date)) 
-            ?? "0";
+        string? dailyBalanceJson = await _distributedCache.GetStringAsync(TransactionKeys.GetDailyBalanceKey(date));
 
-        return decimal.Parse(dailyBalanceJson);
+        if (decimal.TryParse(dailyBalanceJson, out decimal parsedValue))
+        {
+            return parsedValue;
+        }
+
+        return 0m;
     }
 }

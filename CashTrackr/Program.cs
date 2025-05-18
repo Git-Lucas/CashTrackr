@@ -1,5 +1,6 @@
 using CashTrackr.Application;
 using CashTrackr.Infrastructure;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,16 +16,18 @@ var app = builder.Build();
 
 await app.Services.AddInfrastructureAsync();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/", () =>
+{
+    return Results.Ok($"{nameof(CashTrackr)} Running!");
+});
 
 await app.RunAsync();

@@ -1,4 +1,6 @@
-﻿namespace CashTrackr.Domain.Transactions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CashTrackr.Domain.Transactions;
 
 public class Transaction
 {
@@ -14,6 +16,7 @@ public class Transaction
         Type = type;
     }
 
+    [ExcludeFromCodeCoverage]
     public Transaction() { }
 
     public decimal NormalizeTransactionValue()
