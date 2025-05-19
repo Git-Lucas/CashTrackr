@@ -1,4 +1,4 @@
-﻿using CashTrackr.Application.Transactions.Commands.Events;
+﻿using CashTrackr.Application.Balances.Events;
 using CashTrackr.Application.Transactions.Commands.Handlers;
 using CashTrackr.Domain.Transactions;
 using Microsoft.Extensions.Caching.Distributed;
@@ -33,7 +33,7 @@ public class CreateCommandHandlerTests
 
         TransactionCreated transactionCreated = new(mockCache.Object);
 
-        CreateCommandHandler handler = new CreateCommandHandler(loggerMock.Object, mockRepository.Object, transactionCreated);
+        CreateCommandHandler handler = new(loggerMock.Object, mockRepository.Object, transactionCreated);
 
         CreateRequest request = new(100m, Type.Credit);
 
