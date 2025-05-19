@@ -1,5 +1,5 @@
-﻿using CashTrackr.Application.Transactions;
-using CashTrackr.Application.Transactions.Commands.Events;
+﻿using CashTrackr.Application.Balances.Events;
+using CashTrackr.Application.Transactions;
 using CashTrackr.Domain.Transactions;
 using Microsoft.Extensions.Caching.Distributed;
 using Moq;
