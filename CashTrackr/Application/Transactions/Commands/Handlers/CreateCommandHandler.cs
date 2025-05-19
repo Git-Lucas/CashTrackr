@@ -1,4 +1,5 @@
-﻿using CashTrackr.Application.Transactions.Commands.Events;
+﻿using CashTrackr.Application.Balances.Events;
+using CashTrackr.Application.Transactions.Commands.Events;
 using CashTrackr.Domain.Transactions;
 using Type = CashTrackr.Domain.Transactions.Type;
 

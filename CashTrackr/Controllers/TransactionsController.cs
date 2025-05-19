@@ -7,7 +7,7 @@ namespace CashTrackr.Controllers
     [Route("[controller]")]
     public class TransactionsController : ControllerBase
     {
-        [HttpPost(Name = "CreateTransaction")]
+        [HttpPost]
         public async Task<IActionResult> CreateAsync([FromServices] CreateCommandHandler handler, [FromBody] CreateRequest request)
         {
             CreateResponse createResponse = await handler.HandleAsync(request);
