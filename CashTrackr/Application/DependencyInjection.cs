@@ -1,5 +1,5 @@
-﻿using CashTrackr.Application.Balances.Queries.Handlers;
-using CashTrackr.Application.Transactions.Commands.Events;
+﻿using CashTrackr.Application.Balances.Events;
+using CashTrackr.Application.Balances.Queries.Handlers;
 using CashTrackr.Application.Transactions.Commands.Handlers;
 using System.Diagnostics.CodeAnalysis;
 

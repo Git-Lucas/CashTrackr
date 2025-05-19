@@ -1,7 +1,8 @@
-﻿using CashTrackr.Domain.Transactions;
+﻿using CashTrackr.Application.Transactions;
+using CashTrackr.Domain.Transactions;
 using Microsoft.Extensions.Caching.Distributed;
 
-namespace CashTrackr.Application.Transactions.Commands.Events;
+namespace CashTrackr.Application.Balances.Events;
 
 public class TransactionCreated(IDistributedCache distributedCache)
 {

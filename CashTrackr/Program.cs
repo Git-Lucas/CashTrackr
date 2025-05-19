@@ -1,6 +1,5 @@
 using CashTrackr.Application;
 using CashTrackr.Infrastructure;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +7,9 @@ builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services
+    .AddRouting(options => options.LowercaseUrls = true)
+    .AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
